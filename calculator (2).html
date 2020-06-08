@@ -3,10 +3,19 @@
 <head>
     <title> calculator </title>
     
+    <script>
+        window.addEventListener("keypress", checkKeyPress, false);
+
+        function checkKeyPress(key) {
+            if (key.keyCode == "57") {
+                
+            }
+        }
+    </script>
+
     <style>
         body {
-            background: skyblue;
-            
+            background: grey;
         }
         
         * {
@@ -15,11 +24,14 @@
             -moz-box-sizing: border-box;
         }
         .wrap {
-            width: 400px;
+            width: 500px;
             margin: auto;
             height: auto;
-            background: darkgoldenrod;
+            background: darkred;
             padding: 15px;
+            border-color: black;
+            border-style: solid;
+            border-width: 15px;
         }
         input[type=text] {
             width: 100%;
@@ -28,14 +40,19 @@
             font-weight: bold;
             margin-top: 20px;
             border-radius: 5px;
+            background-color: black;
+            color: white;
+            border-color: white;
+            border-width: 10px;
         }
         input[type=button] {
-            width: 89px;
-            padding: 10px;
+            width: auto;
+            height: auto;
+            padding: 15px 35px;
             font-size: 22px;
             font-weight: bold;
             border-radius: 10px;
-            border-color: lime;
+            border-color: black;
             border-style: solid;
             border-width: 5px;
             background-color: darkslategrey;
@@ -48,12 +65,14 @@
 
 </head>
 
+
+
 <body>
-    <div class="wrap">
+    <div class="wrap"> 
         <form name = "cal">
             <input type ="text" name = "display">
             <br><br>
-<!-- button nummer 9 -->
+
             <input type = "button" value = "9" onclick = "cal.display.value+='9'">  <!-- button nummer 9 -->
             <input type = "button" value = "8" onclick = "cal.display.value+='8'">  <!-- button nummer 8-->
             <input type = "button" value = "7" onclick = "cal.display.value+='7'">  <!-- button nummer 7 -->
@@ -78,7 +97,14 @@
             <input type = "button" value = "=" onclick = "cal.display.value =eval(cal.display.value)"> <!-- button % -->
             <br><br>
 
-            <input type = "button" value = "DELETE" onclick = "cal.display.value= ''" id = "del">
+            <input type = "button" value = "km/h                  ->               mp/h" onclick = "cal.display.value+=''">  <!-- button km/h -> mp/h -->
+            <br><br>
+            <input type = "button" value = "mp/h                  ->               km/h" onclick = "cal.display.value+=''">  <!-- button mp/h -> km/h -->
+            <br><br>
+            <input type = "button" value = "km/h                  ->                  m/s" onclick = "cal.display.value+=''">  <!-- button km/h -> m/s -->
+            <br><br>    
+
+            <input type = "button" value = "Delete" onclick = "cal.display.value= ''" id = "del">
         </form>
     </div>
 </body>
