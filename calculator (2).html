@@ -4,14 +4,12 @@
     <title> calculator </title>
     
     <script>
-        window.addEventListener("keypress", checkKeyPress, false);
 
-        function checkKeyPress(key) {
-            if (key.keyCode == "57") {
-                
-            }
+        function speedConverter(valNum) {
+        document.getElementById("outputKPH").innerHTML=valNum*1.609344;
         }
-    </script>
+   
+   </script>
 
     <style>
         body {
@@ -61,6 +59,10 @@
         #del {
             width: 100%;
         }
+        input[type=number] {
+            position: absolute;
+            top: 50px;
+        }
     </style>
 
 </head>
@@ -97,15 +99,22 @@
             <input type = "button" value = "=" onclick = "cal.display.value =eval(cal.display.value)"> <!-- button % -->
             <br><br>
 
-            <input type = "button" value = "km/h                  ->               mp/h" onclick = "cal.display.value+=''">  <!-- button km/h -> mp/h -->
+            <input type = "button" value = "km/h -> mp/h" onclick = "cal.display.value+=''">  <!-- button km/h -> mp/h -->
             <br><br>
-            <input type = "button" value = "mp/h                  ->               km/h" onclick = "cal.display.value+=''">  <!-- button mp/h -> km/h -->
+            <input type = "button" value = "mp/h -> km/h" onclick = "cal.display.value+=''">  <!-- button mp/h -> km/h -->
             <br><br>
-            <input type = "button" value = "km/h                  ->                  m/s" onclick = "cal.display.value+=''">  <!-- button km/h -> m/s -->
+            <input type = "button" value = "km/h -> m/s" onclick = "cal.display.value+=''">  <!-- button km/h -> m/s -->
             <br><br>    
 
             <input type = "button" value = "Delete" onclick = "cal.display.value= ''" id = "del">
         </form>
     </div>
+
+        <p>
+        <label>MPH</label>
+        <input id="inputMPH" type="number" placeholder="MPH" oninput="speedConverter(this.value)" onchange="speedConverter(this.value)">
+        </p>
+        <p>KPH: <span id="outputKPH"></span></p>
+
 </body>
 </html>
