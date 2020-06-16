@@ -5,9 +5,12 @@
     
     <script>
 
-        function speedConverter(valNum) {
-        document.getElementById("outputKPH").innerHTML=valNum*1.609344;
+        function speedConverter() {
+        var screen = document.getElementById("screen");
+        var value = parseFloat(screen.value) * 1.609344;
+        screen.value = value;
         }
+
    
    </script>
 
@@ -32,7 +35,7 @@
             border-width: 15px;
         }
         input[type=text] {
-            width: 100%;
+            width: 100%; 
             padding: 10px;
             font-size: 22px;
             font-weight: bold;
@@ -59,10 +62,6 @@
         #del {
             width: 100%;
         }
-        input[type=number] {
-            /* position: absolute;
-            top: 50px; */
-        }
     </style>
 
 </head>
@@ -72,28 +71,28 @@
 <body>
     <div class="wrap"> 
         <form name = "cal">
-            <input type ="text" name = "display">
+            <input type ="text" id = "screen" name = "display">
             <br><br>
 
-            <input type = "button" value = "9" onclick = "cal.display.value+='9'">  <!-- button nummer 9 -->
-            <input type = "button" value = "8" onclick = "cal.display.value+='8'">  <!-- button nummer 8-->
-            <input type = "button" value = "7" onclick = "cal.display.value+='7'">  <!-- button nummer 7 -->
+            <input type = "button" class = "number" value = "9" onclick = "cal.display.value+='9'">  <!-- button nummer 9 -->
+            <input type = "button" class = "number" value = "8" onclick = "cal.display.value+='8'">  <!-- button nummer 8-->
+            <input type = "button" class = "number" value = "7" onclick = "cal.display.value+='7'">  <!-- button nummer 7 -->
             <input type = "button" value = "+" onclick = "cal.display.value+='+'">  <!-- button + -->
             <br><br>
 
-            <input type = "button" value = "6" onclick = "cal.display.value+='6'">  <!-- button nummer 6 -->
-            <input type = "button" value = "5" onclick = "cal.display.value+='5'">  <!-- button nummer 5 -->
-            <input type = "button" value = "4" onclick = "cal.display.value+='4'">  <!-- button nummer 4 -->
+            <input type = "button" class = "number" value = "6" onclick = "cal.display.value+='6'">  <!-- button nummer 6 -->
+            <input type = "button" class = "number" value = "5" onclick = "cal.display.value+='5'">  <!-- button nummer 5 -->
+            <input type = "button" class = "number" value = "4" onclick = "cal.display.value+='4'">  <!-- button nummer 4 -->
             <input type = "button" value = "-" onclick = "cal.display.value+='-'">  <!-- button - -->
             <br><br>
             
-            <input type = "button" value = "3" onclick = "cal.display.value+='3'">  <!-- button nummer 3 -->
-            <input type = "button" value = "2" onclick = "cal.display.value+='2'">  <!-- button nummer 2 -->
-            <input type = "button" value = "1" onclick = "cal.display.value+='1'">  <!-- button nummer 1 -->
+            <input type = "button" class = "number" value = "3" onclick = "cal.display.value+='3'">  <!-- button nummer 3 -->
+            <input type = "button" class = "number" value = "2" onclick = "cal.display.value+='2'">  <!-- button nummer 2 -->
+            <input type = "button" class = "number" value = "1" onclick = "cal.display.value+='1'">  <!-- button nummer 1 -->
             <input type = "button" value = "*" onclick = "cal.display.value+='*'">  <!-- button * -->
             <br><br>
 
-            <input type = "button" value = "0" onclick = "cal.display.value+='0'">  <!-- button nummer 0 -->
+            <input type = "button" class = "number" value = "0" onclick = "cal.display.value+='0'">  <!-- button nummer 0 --> 
             <input type = "button" value = "/" onclick = "cal.display.value+='/'">  <!-- button / -->
             <input type = "button" value = "%" onclick = "cal.display.value+='%'">  <!-- button % -->
             <input type = "button" value = "=" onclick = "cal.display.value =eval(cal.display.value)"> <!-- button % -->
@@ -101,7 +100,7 @@
 
             <input type = "button" value = "km/h -> mp/h" onclick = "cal.display.value+=''">  <!-- button km/h -> mp/h -->
             <br><br>
-            <input type = "button" value = "mp/h -> km/h" onclick = "cal.display.value+=''">  <!-- button mp/h -> km/h -->
+            <input type = "button" value = "mp/h -> km/h" onclick = "speedConverter()">  <!-- button mp/h -> km/h -->
             <br><br>
             <input type = "button" value = "km/h -> m/s" onclick = "cal.display.value+=''">  <!-- button km/h -> m/s -->
             <br><br>    
@@ -111,10 +110,14 @@
     </div>
 
         <p>
-        <label>MPH</label>
-        <input id="inputMPH" type="number" placeholder="MPH" oninput="speedConverter(this.value)" onchange="speedConverter(this.value)">
-        </p>
-        <p>KPH: <span id="outputKPH"></span></p>
+            <label>MPH</label>
+            <input id="inputMPH" type="number" placeholder="MPH" oninput="speedConverter(this.value)" onchange="speedConverter(this.value)">
+            </p>
+            <p>KPH: <span id="outputKPH"></span></p>
 
+            <script>
+                var numbers = document.getElementsByClassName("number");
+            </script>
 </body>
+
 </html>
